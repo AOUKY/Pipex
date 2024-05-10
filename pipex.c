@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:15:48 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/10 16:18:09 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/10 19:56:57 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void	here_doc(char **v, char **env, int *fd, int c)
 	if (pid == 0)
 		last_child(fd, v, env, c);
 	close(fd[0]);
-	while (wait(0) && ((c--) - 4))
+	while (wait(0) > 0 && ((c--) - 4))
 		;
 }
 
@@ -128,6 +128,6 @@ int	main(int c, char **v, char **env)
 	if (pid2 == 0)
 		last_child(fd, v, env, c);
 	close(fd[0]);
-	while (wait(0) && ((c--) - 3))
+	while (wait(0) > 0 && ((c--) - 3))
 		;
 }

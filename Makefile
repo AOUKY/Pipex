@@ -1,7 +1,7 @@
 MFILES = pipex.c file.c childs.c  
 NAME = pipex
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra
 GNL = Get_Next_Line/get_next_line.c Get_Next_Line/get_next_line_utils.c
 PRINTF = ft_printf/libftprintf.a
 DPRINT = ft_printf
