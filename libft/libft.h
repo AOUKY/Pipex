@@ -6,14 +6,13 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:20:57 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/07 11:46:21 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/10 16:04:55 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

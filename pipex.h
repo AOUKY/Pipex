@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:43:47 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/07 12:49:35 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/10 16:05:24 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@
 # include "Get_Next_Line/get_next_line.h"
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
-# include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
 
 char	*get_cmd(char *cmd, char **env);
 char	*get_path(char **env);

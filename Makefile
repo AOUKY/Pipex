@@ -1,17 +1,23 @@
 MFILES = pipex.c file.c childs.c  
 NAME = pipex
 CC = cc
-GFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 GNL = Get_Next_Line/get_next_line.c Get_Next_Line/get_next_line_utils.c
 PRINTF = ft_printf/libftprintf.a
 DPRINT = ft_printf
 LIBFT = libft/libft.a
 DLIBFT = libft
+HEDER = pipex.h
+OBJ = ${MFILES:.c=.o}
+OGL = ${GNL:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(MFILES) $(PRINTF) $(LIBFT) $(GNL)
-		$(CC) $(GFLAGS) $(MFILES) $(PRINTF) $(LIBFT) $(GNL) -o $(NAME)
+$(NAME): $(OBJ) $(PRINTF) $(LIBFT) $(OGL)
+		$(CC) $(CFLAGS) $(OBJ) $(PRINTF) $(LIBFT) $(OGL) -o $(NAME)
+
+%.o: %.c $(HEDER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(PRINTF):
 	make -C $(DPRINT)
@@ -23,7 +29,7 @@ $(LIBFT):
 clean:
 	make -C $(DPRINT) fclean
 	make -C $(DLIBFT) fclean
-	rm -rf outfile
+	rm -f $(OBJ) $(OGL)
 
 fclean: clean
 	rm -f $(NAME)
