@@ -58,7 +58,7 @@ static void	se_here_doc(char **v, char **env, int *fd, int c)
 	}
 }
 
-void	here_doc(char **v, char **env, int *fd, int c) 
+void	here_doc(char **v, char **env, int *fd, int c)
 {
 	char	*line;
 	char	*heredoc;

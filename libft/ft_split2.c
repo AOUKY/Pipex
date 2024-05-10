@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:26:51 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/09 18:04:49 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/10 10:19:43 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	**getarray(t_list *lst)
 		i++;
 		lst = lst->next;
 	}
-	str[i] = 0;	
+	str[i] = 0;
 	return (str);
 }
 
@@ -85,7 +85,7 @@ char	**lsplit(char *s, char c)
 			while (s[i] == c)
 				i++;
 		}
-		if(s[i])
+		if (s[i])
 		{
 			ft_lstadd_back(&lst, ft_lstnew(ft_substr(s, i, lenw(&s[i], c))));
 			i += lenw(&s[i], c);

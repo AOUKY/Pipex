@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 09:32:26 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/09 11:53:52 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/10 10:29:08 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	first_child(int *fd, int fd2, char *v, char **env)
 	cmd = get_cmd(v, env);
 	if (!cmd)
 	{
-		if (find_c(v, '/'))  
+		if (find_c(v, '/'))
 			ft_printf("./pipex: no such file or directory : %s\n", v);
 		else
 			ft_printf("./pipex: command not found: %s\n", v);
@@ -30,12 +30,12 @@ int	first_child(int *fd, int fd2, char *v, char **env)
 	dup2(fd[1], 1);
 	close(fd[1]);
 	close(fd[0]);
-	if(fd2 == -1)
+	if (fd2 == -1)
 	{
-		close (1);
-		close (0);
+		close(1);
+		close(0);
 		exit(EXIT_FAILURE);
-	}	
+	}
 	if (execve(cmd, lsplit(v, ' '), env) == -1)
 		perror("execve");
 	exit(EXIT_FAILURE);
@@ -64,20 +64,28 @@ int	middle_child(int old_read, char *v, char **env, int *fd)
 	exit(EXIT_FAILURE);
 }
 
-int	last_child(int *fd, char **v, char **env, int c)
+static	int	se_l_child(int c, char **v)
 {
-	int		fd2;
-	char	*cmd;
+	int	fd2;
 
 	if (cmp(v[1], "here_doc"))
 		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
 	else
 		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if(fd2 == -1)
+	if (fd2 == -1)
 	{
 		perror(v[0]);
 		exit(EXIT_FAILURE);
 	}
+	return (fd2);
+}
+
+int	last_child(int *fd, char **v, char **env, int c)
+{
+	int		fd2;
+	char	*cmd;
+
+	fd2 = se_l_child(c, v);
 	cmd = get_cmd(v[c - 2], env);
 	if (!cmd)
 	{
