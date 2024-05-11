@@ -64,7 +64,7 @@ int	middle_child(int old_read, char *v, char **env, int *fd)
 	exit(EXIT_FAILURE);
 }
 
-static	int	se_l_child(int c, char **v)
+static int	se_l_child(int c, char **v)
 {
 	int	fd2;
 

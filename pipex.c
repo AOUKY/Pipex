@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 13:15:48 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/10 19:56:57 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/11 11:11:46 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,22 @@ static void	se_here_doc(char **v, char **env, int *fd, int c)
 static void	here_doc(char **v, char **env, int *fd, int c)
 {
 	char	*line;
-	char	*heredoc;
 	int		pid;
 	char	*limeter;
 
 	check_error(pipe(fd), 1, v, c);
-	heredoc = 0;
 	limeter = ft_strjoin(v[2], "\n");
 	ft_printf(">");
 	line = get_next_line(0);
 	while (line && (cmp(line, limeter)) == 0)
 	{
-		heredoc = ft_strjoin(heredoc, line);
+		ft_putstr_fd(line, fd[1]);
+		free(line);
 		ft_printf(">");
 		line = get_next_line(0);
 	}
-	ft_putstr_fd(heredoc, fd[1]);
+	free(limeter);
+	free(line);
 	se_here_doc(v, env, fd, c);
 	pid = fork();
 	if (pid == 0)
