@@ -25,7 +25,7 @@ char	*get_cmd(char *cmd, char **env)
 	if (access(cmd2[0], F_OK) == 0)
 		return (cmd2[0]);
 	paths = ft_split(get_path(env), ':');
-	while (paths[i])
+	while (paths && paths[i])
 	{
 		tmp = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(tmp, cmd2[0]);
