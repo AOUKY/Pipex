@@ -31,7 +31,7 @@ void	fr_double(char **s)
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 		free(s[i++]);
 	free(s);
 }
