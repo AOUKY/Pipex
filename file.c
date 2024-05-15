@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:13:48 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/11 11:13:13 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/15 09:59:57 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_cmd(char *cmd, char **env)
 
 	i = 0;
 	cmd2 = ft_split(cmd, ' ');
-	if (access(cmd2[0], F_OK) == 0)
+	if (access(cmd2[0], X_OK) == 0)
 		return (cmd2[0]);
 	paths = ft_split(get_path(env), ':');
 	while (paths && paths[i])
@@ -30,7 +30,7 @@ char	*get_cmd(char *cmd, char **env)
 		tmp = ft_strjoin(paths[i], "/");
 		path = ft_strjoin(tmp, cmd2[0]);
 		free(tmp);
-		if (access(path, F_OK) == 0)
+		if (access(path, X_OK) == 0)
 			return (path);
 		if (tmp != path)
 			free(path);

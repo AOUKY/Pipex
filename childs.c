@@ -6,7 +6,7 @@
 /*   By: haouky <haouky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 09:32:26 by haouky            #+#    #+#             */
-/*   Updated: 2024/05/10 19:54:51 by haouky           ###   ########.fr       */
+/*   Updated: 2024/05/15 10:00:13 by haouky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ static int	se_l_child(int c, char **v)
 	int	fd2;
 
 	if (cmp(v[1], "here_doc"))
-		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_APPEND, 0777);
+		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_APPEND, 0640);
 	else
-		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		fd2 = open(v[c - 1], O_WRONLY | O_CREAT | O_TRUNC, 0640);
 	if (fd2 == -1)
 	{
 		perror(v[0]);
